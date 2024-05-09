@@ -1,6 +1,7 @@
 import types
 from menuoption import MenuOption
 from error import IllegalArgumentError
+from icecream import ic
 class CLIMenu:
     def __init__(self):
         self.menu_options = {}
@@ -19,14 +20,3 @@ class CLIMenu:
 
     def run(self):
         print(self.menu_options)
-
-
-def f():
-    return 1
-
-
-x = CLIMenu()
-c = MenuOption()
-x.add_menu_option(c, 1)
-x.add_func(f, 2)
-x.run()

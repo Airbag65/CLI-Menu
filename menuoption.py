@@ -6,7 +6,7 @@ class MenuOption:
 
 class MenuOption:
     def __init__(self):
-        self.menu_options = []
+        self.menu_options = {}
 
     def add_menu_option(self, menu_option: MenuOption, option_index: int) -> None:
         if not isinstance(menu_option, MenuOption):
