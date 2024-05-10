@@ -20,4 +20,7 @@ class MenuOption:
         self.menu_options[option_index] = functionality
 
     def run(self):
-        print("Hello World")
+        for key, val in self.menu_options.items():
+            print(f"[{key}] {val.title}")
+        choice = int(input(": "))
+ 
