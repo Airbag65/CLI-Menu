@@ -1,4 +1,5 @@
 from error import IllegalArgumentError
+import os
 import types
 
 class MenuOption:
@@ -20,10 +21,19 @@ class MenuOption:
         self.menu_options[len(self.menu_options) + 1] = [title, functionality]
 
     def run(self):
+        os.system("cls" if os.name == "nt" else "clear")
         for key, val in self.menu_options.items():
             if isinstance(val, MenuOption):
                 print(f"[{key}] {val.title}")
             else:
                 print(f"[{key}] {val[0]}")
         choice = int(input(": "))
- 
+        if choice not in self.menu_options.keys():
+            print("Not a valid option")
+            return
+        chosen_option = self.menu_options[choice]
+        if isinstance(chosen_option, MenuOption):
+            chosen_option.run()
+        else:
+            chosen_option[1]()
+

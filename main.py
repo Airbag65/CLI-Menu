@@ -3,15 +3,18 @@ import CLImenu
 menu = CLImenu.CLIMenu()
 
 item = CLImenu.MenuOption("test1")
-item.add_menu_option(CLImenu.MenuOption("test"))
+def fn():
+    print("internal func")
+item.add_func(fn, "internal func")
 
 menu.add_menu_option(item)
-menu.add_menu_option(CLImenu.MenuOption("test2"))
-menu.add_menu_option(CLImenu.MenuOption("test3"))
 
-def test_f():
-    print("this do be working tho")
+def f():
+    print("func1")
 
-menu.add_func(test_f, "Test Func") 
+def g():
+    print("func2")
 
+menu.add_func(f, "func1") 
+menu.add_func(g, "func2")
 menu.run()

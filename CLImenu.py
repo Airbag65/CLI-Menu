@@ -1,3 +1,4 @@
+import os
 import types
 from menuoption import MenuOption
 from error import IllegalArgumentError
@@ -17,6 +18,7 @@ class CLIMenu:
         self.menu_options[len(self.menu_options) + 1] = [title, functionality]
 
     def run(self) -> None:
+        os.system("cls" if os.name == "nt" else "clear")
         for key, val in self.menu_options.items():
             if isinstance(val, MenuOption):
                 print(f"[{key}] {val.title}")
