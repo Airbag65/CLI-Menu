@@ -1,3 +1,0 @@
-class IllegalArgumentError(ValueError):
-    pass
-
