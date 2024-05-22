@@ -111,4 +111,4 @@ Hello There!
 
 ### If you like my work
 Feel free to send a small donation if you like my work! But by all means, DO NOT feel preasured to do so!!
-![paypal qr code](./qrcode.png)
+![paypal qr code](https://github.com/Airbag65/CLI-Menu/blob/main/qrcode.png)
