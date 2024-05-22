@@ -56,6 +56,7 @@ class CLIMenu:
         self.menu_options[len(self.menu_options) + 1] = [title, functionality]
 
     def run(self) -> None:
+        self.menu_options[len(self.menu_options) + 1] = ("Quit", "")
         os.system("cls" if os.name == "nt" else "clear")
         for key, val in self.menu_options.items():
             if isinstance(val, MenuOption):
@@ -69,6 +70,9 @@ class CLIMenu:
         chosen_option = self.menu_options[choice]
         if isinstance(chosen_option, MenuOption):
             chosen_option.run()
+        elif isinstance(chosen_option, tuple):
+            print("Quitting")
+            return
         else:
             chosen_option[1]()
 
