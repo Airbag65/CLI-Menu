@@ -110,5 +110,5 @@ Hello There!
 ```
 
 ### If you like my work
-Feel free to send a small donation if you like my work! But for all means, DO NOT feel preasured to do so!!
+Feel free to send a small donation if you like my work! But by all means, DO NOT feel preasured to do so!!
 ![paypal qr code](./qrcode.png)
