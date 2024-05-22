@@ -110,5 +110,5 @@ Hello There!
 ```
 
 ### If you like my work
-Feel free to send a small donation if you like my work! But by all means, DO NOT feel preasured to do so!!
+Feel free to send a small donation via the [GitHub page](https://github.com/Airbag65/CLI-Menu) if you like my work! But by all means, DO NOT feel preasured to do so!!
 ![paypal qr code](https://github.com/Airbag65/CLI-Menu/blob/main/qrcode.png)
