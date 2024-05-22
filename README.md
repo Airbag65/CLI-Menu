@@ -108,3 +108,7 @@ The 1st option was chosen here so the program enters this state:
 : 1
 Hello There!
 ```
+
+### If you like my work
+Feel free to send a small donation if you like my work! But for all means, DO NOT feel preasured to do so!!
+![paypal qr code](./qrcode.png)
