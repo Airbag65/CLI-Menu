@@ -28,11 +28,11 @@ When you have activated the virtual environment and running from within it, you 
 
 Windows:
 ```bat
-py -m pip install --index-url https://test.pypi.org/simple/ --no-deps airbagclimenu
+pip3 install airbagclimenu
 ```
 MacOS / Linux: 
 ```Bash
-python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps airbagclimenu
+pip install airbagclimenu
 ```
 
 ## Usage
@@ -45,6 +45,15 @@ To create and run the menu, you do as follows:
 menu = Menu.CLIMenu()
 menu.run()
 ```
+The construcor for the menu takes an optional argument ```quit_stmt``` which is ```True``` by default. It provides an option to quit the menu that you don't have to add yourself. 
+When the quit option is present, the menu will run indefinitly, meaning you don't have to restart it for each time after choosing an option. This loop is however not present if 
+the quit statement is not there. If you which not to have the quit statement, you simply pass the argument ```False``` into the construcor when creating the object. 
+
+
+The ```run``` method also takes an optional argument ```clear_screen```, which determines whether the screen should clear after each option. It's default value is
+```True``` but can easily be switched of by giving the argument ```False``` to the ```run``` method.
+
+
 To add alternatives in the menu you have two options. You can add a function that will execute when that option is chosen, or you can add a submenu, which reveals more options when chosen. 
 ### add_menu_option(menu_option: MenuOption)
 This method takes one parameter which should be of type ```MenuOption```. See example usecase below:
