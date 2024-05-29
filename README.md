@@ -76,8 +76,15 @@ def greet():
 
 menu.add_func(greet, "Say Hello")
 ```
-The function that is used **must** be parameterless, since there is no way of giving parameters as of now.
-
+As of version 1.1.0 the function used does now support parameters. If the function does not take arguments, it will just run it directly. If it however does take arguments, you will
+be prompted to enter these when you try to run the function via the menu. It will look like this: 
+```
+--- Args ---
+argument_1: <value of arugment>
+argument_2: <value of argument>
+------------ 
+```
+> The name of the argument will be displayed instead of ```argument_1``` etc.
 
 ## Example Program
 ```Python

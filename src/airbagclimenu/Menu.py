@@ -1,4 +1,6 @@
 import os
+import time 
+import inspect
 import types
 
 
@@ -25,6 +27,7 @@ class MenuOption:
 
     def run(self, clear_screen = True):
         if clear_screen:
+            time.sleep(1)
             os.system("cls" if os.name == "nt" else "clear")
         for key, val in self.menu_options.items():
             if isinstance(val, MenuOption):
@@ -39,7 +42,20 @@ class MenuOption:
         if isinstance(chosen_option, MenuOption):
             chosen_option.run(clear_screen)
         else:
-            chosen_option[1]()
+            if inspect.getfullargspec(chosen_option[1]).args:
+                print("--- Args ---")
+                args_list = []
+                for arg in inspect.getfullargspec(chosen_option[1]).args:
+                    given_arg = input(f"{ arg }: ")
+                    if int(given_arg):
+                        given_arg = int(given_arg)
+                    elif float(given_arg):
+                        given_arg = float(given_arg)
+                    args_list.append(given_arg)
+                print("------------")
+                chosen_option[1](*args_list)
+            else:
+                chosen_option[1]()
 
 
 class CLIMenu:
@@ -63,6 +79,7 @@ class CLIMenu:
             _quit = self.quit_stmt
             while _quit:
                 if clear_screen:
+                    time.sleep(1)
                     os.system("cls" if os.name == "nt" else "clear")
                 for key, val in self.menu_options.items():
                     if isinstance(val, MenuOption):
@@ -80,9 +97,24 @@ class CLIMenu:
                     print("Quitting")
                     _quit = False
                 else:
-                    chosen_option[1]()
+                    if inspect.getfullargspec(chosen_option[1]).args:
+                        print("--- Args ---")
+                        args_list = []
+                        for arg in inspect.getfullargspec(chosen_option[1]).args:
+                            given_arg = input(f"{ arg }: ")
+                            if int(given_arg):
+                                given_arg = int(given_arg)
+                            elif float(given_arg):
+                                given_arg = float(given_arg)
+                            args_list.append(given_arg)
+                        print("------------")
+                        chosen_option[1](*args_list)
+                    else:
+                        chosen_option[1]()
+
         else:
             if clear_screen:
+                time.sleep(1)
                 os.system("cls" if os.name == "nt" else "clear")
             for key, val in self.menu_options.items():
                 if isinstance(val, MenuOption):
@@ -100,7 +132,20 @@ class CLIMenu:
                 print("Quitting")
                 return
             else:
-                chosen_option[1]()
+                if inspect.getfullargspec(chosen_option[1]).args:
+                    print("--- Args ---")
+                    args_list = []
+                    for arg in inspect.getfullargspec(chosen_option[1]).args:
+                        given_arg = input(f"{ arg }: ")
+                        if int(given_arg):
+                            given_arg = int(given_arg)
+                        elif float(given_arg):
+                            given_arg = float(given_arg)
+                        args_list.append(given_arg)
+                    print("------------")
+                    chosen_option[1](*args_list)
+                else:
+                    chosen_option[1]()
 
 
 
