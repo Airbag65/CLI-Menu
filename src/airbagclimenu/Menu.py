@@ -160,3 +160,4 @@ class CLIMenu:
                 else:
                     chosen_option[1]()
                 time.sleep(1)
+
