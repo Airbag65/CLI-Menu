@@ -12,6 +12,7 @@ class MenuOption:
 
 class MenuOption:
     def __init__(self, title: str):
+        self.back_arg_set = False
         self.title = title
         self.menu_options = {}
 
@@ -25,10 +26,19 @@ class MenuOption:
             raise IllegalArgumentError("Argument must be of type 'Function'")
         self.menu_options[len(self.menu_options) + 1] = [title, functionality]
 
-    def run(self, clear_screen = True):
+    def __add_back_option(self):
+        def go_back():
+            return
+        if not self.back_arg_set:
+            self.add_func(go_back, "Back")
+            self.back_arg_set = True
+
+    def run(self, back_stmt, clear_screen = True):
+        if back_stmt:
+            self.__add_back_option()
         if clear_screen:
-            time.sleep(1)
             os.system("cls" if os.name == "nt" else "clear")
+        print(f"--- {self.title} ---")
         for key, val in self.menu_options.items():
             if isinstance(val, MenuOption):
                 print(f"[{key}] {val.title}")
@@ -56,12 +66,14 @@ class MenuOption:
                 chosen_option[1](*args_list)
             else:
                 chosen_option[1]()
+            time.sleep(1)
 
 
 class CLIMenu:
-    def __init__(self, quit_stmt = True):
+    def __init__(self, title, quit_stmt = True):
         self.quit_stmt = quit_stmt
         self.menu_options = {}
+        self.title = title
 
     def add_menu_option(self, menu_option: MenuOption) -> None:
         if not isinstance(menu_option, MenuOption):
@@ -79,8 +91,8 @@ class CLIMenu:
             _quit = self.quit_stmt
             while _quit:
                 if clear_screen:
-                    time.sleep(1)
                     os.system("cls" if os.name == "nt" else "clear")
+                print(f"--- {self.title} ---")
                 for key, val in self.menu_options.items():
                     if isinstance(val, MenuOption):
                         print(f"[{key}] {val.title}")
@@ -92,7 +104,7 @@ class CLIMenu:
                     _quit = False
                 chosen_option = self.menu_options[choice]
                 if isinstance(chosen_option, MenuOption):
-                    chosen_option.run(clear_screen)
+                    chosen_option.run(self.quit_stmt ,clear_screen)
                 elif isinstance(chosen_option, tuple):
                     print("Quitting")
                     _quit = False
@@ -111,11 +123,12 @@ class CLIMenu:
                         chosen_option[1](*args_list)
                     else:
                         chosen_option[1]()
+                    time.sleep(1)
 
         else:
             if clear_screen:
-                time.sleep(1)
                 os.system("cls" if os.name == "nt" else "clear")
+            print(f"--- {self.title} ---")
             for key, val in self.menu_options.items():
                 if isinstance(val, MenuOption):
                     print(f"[{key}] {val.title}")
@@ -127,7 +140,7 @@ class CLIMenu:
                 return
             chosen_option = self.menu_options[choice]
             if isinstance(chosen_option, MenuOption):
-                chosen_option.run(clear_screen)
+                chosen_option.run(self.quit_stmt, clear_screen)
             elif isinstance(chosen_option, tuple):
                 print("Quitting")
                 return
@@ -146,3 +159,4 @@ class CLIMenu:
                     chosen_option[1](*args_list)
                 else:
                     chosen_option[1]()
+                time.sleep(1)
