@@ -56,6 +56,8 @@ class MenuOption:
                 print("--- Args ---")
                 args_list = []
                 for arg in inspect.getfullargspec(chosen_option[1]).args:
+                    if str(arg) == "self":
+                        continue
                     given_arg = input(f"{ arg }: ")
                     if int(given_arg):
                         given_arg = int(given_arg)
@@ -113,6 +115,8 @@ class CLIMenu:
                         print("--- Args ---")
                         args_list = []
                         for arg in inspect.getfullargspec(chosen_option[1]).args:
+                            if str(arg) == "self":
+                                continue
                             given_arg = input(f"{ arg }: ")
                             if int(given_arg):
                                 given_arg = int(given_arg)
@@ -149,6 +153,8 @@ class CLIMenu:
                     print("--- Args ---")
                     args_list = []
                     for arg in inspect.getfullargspec(chosen_option[1]).args:
+                        if str(arg) == "self":
+                            continue
                         given_arg = input(f"{ arg }: ")
                         if int(given_arg):
                             given_arg = int(given_arg)
