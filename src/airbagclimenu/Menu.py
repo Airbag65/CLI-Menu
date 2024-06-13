@@ -53,18 +53,21 @@ class MenuOption:
             chosen_option.run(clear_screen)
         else:
             if inspect.getfullargspec(chosen_option[1]).args:
-                print("--- Args ---")
                 args_list = []
-                for arg in inspect.getfullargspec(chosen_option[1]).args:
-                    if str(arg) == "self":
-                        continue
-                    given_arg = input(f"{ arg }: ")
-                    if int(given_arg):
-                        given_arg = int(given_arg)
-                    elif float(given_arg):
-                        given_arg = float(given_arg)
-                    args_list.append(given_arg)
-                print("------------")
+                if not (len(inspect.getfullargspec(chosen_option[1]).args) == 1 and inspect.getfullargspec(chosen_option[1]).args[0] == "self"):
+                    print("--- Args ---")
+                    for arg in inspect.getfullargspec(chosen_option[1]).args:
+                        # if str(arg) == "self":
+                        #     if len(inspect.getfullargspec(chosen_option[1]).args) == 1:
+                        #         break
+                        #     continue
+                        given_arg = input(f"{ arg }: ")
+                        if int(given_arg):
+                            given_arg = int(given_arg)
+                        elif float(given_arg):
+                            given_arg = float(given_arg)
+                        args_list.append(given_arg)
+                    print("------------")
                 chosen_option[1](*args_list)
             else:
                 chosen_option[1]()
@@ -112,18 +115,21 @@ class CLIMenu:
                     _quit = False
                 else:
                     if inspect.getfullargspec(chosen_option[1]).args:
-                        print("--- Args ---")
                         args_list = []
-                        for arg in inspect.getfullargspec(chosen_option[1]).args:
-                            if str(arg) == "self":
-                                continue
-                            given_arg = input(f"{ arg }: ")
-                            if int(given_arg):
-                                given_arg = int(given_arg)
-                            elif float(given_arg):
-                                given_arg = float(given_arg)
-                            args_list.append(given_arg)
-                        print("------------")
+                        if not (len(inspect.getfullargspec(chosen_option[1]).args) == 1 and inspect.getfullargspec(chosen_option[1]).args[0] == "self"):
+                            print("--- Args ---")
+                            for arg in inspect.getfullargspec(chosen_option[1]).args:
+                                # if str(arg) == "self":
+                                #     if len(inspect.getfullargspec(chosen_option[1]).args) == 1:
+                                #         break
+                                #     continue
+                                given_arg = input(f"{ arg }: ")
+                                if int(given_arg):
+                                    given_arg = int(given_arg)
+                                elif float(given_arg):
+                                    given_arg = float(given_arg)
+                                args_list.append(given_arg)
+                            print("------------")
                         chosen_option[1](*args_list)
                     else:
                         chosen_option[1]()
@@ -150,18 +156,21 @@ class CLIMenu:
                 return
             else:
                 if inspect.getfullargspec(chosen_option[1]).args:
-                    print("--- Args ---")
                     args_list = []
-                    for arg in inspect.getfullargspec(chosen_option[1]).args:
-                        if str(arg) == "self":
-                            continue
-                        given_arg = input(f"{ arg }: ")
-                        if int(given_arg):
-                            given_arg = int(given_arg)
-                        elif float(given_arg):
-                            given_arg = float(given_arg)
-                        args_list.append(given_arg)
-                    print("------------")
+                    if not (len(inspect.getfullargspec(chosen_option[1]).args) == 1 and inspect.getfullargspec(chosen_option[1]).args[0] == "self"):
+                        print("--- Args ---")
+                        for arg in inspect.getfullargspec(chosen_option[1]).args:
+                            # if str(arg) == "self":
+                            #     if len(inspect.getfullargspec(chosen_option[1]).args) == 1:
+                            #         break
+                            #     continue
+                            given_arg = input(f"{ arg }: ")
+                            if int(given_arg):
+                                given_arg = int(given_arg)
+                            elif float(given_arg):
+                                given_arg = float(given_arg)
+                            args_list.append(given_arg)
+                        print("------------")
                     chosen_option[1](*args_list)
                 else:
                     chosen_option[1]()
