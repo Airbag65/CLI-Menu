@@ -22,7 +22,7 @@ class MenuOption:
         self.menu_options[len(self.menu_options) + 1] = menu_option
 
     def add_func(self, functionality, title: str):
-        if not isinstance(functionality, types.FunctionType) or not (str(type(functionality)) == "<class 'method'>"):
+        if not isinstance(functionality, types.FunctionType) and not (str(type(functionality)) == "<class 'method'>"):
             raise IllegalArgumentError("Argument must be of type 'Function'")
         self.menu_options[len(self.menu_options) + 1] = [title, functionality]
 
@@ -81,7 +81,7 @@ class CLIMenu:
         self.menu_options[len(self.menu_options) + 1] = menu_option
 
     def add_func(self, functionality, title: str):
-        if not isinstance(functionality, types.FunctionType) or not (str(type(functionality)) == "<class 'method'>"):
+        if not isinstance(functionality, types.FunctionType) and not (str(type(functionality)) == "<class 'method'>"):
             raise IllegalArgumentError("Argument must be of type 'Function'")
         self.menu_options[len(self.menu_options) + 1] = [title, functionality]
 
